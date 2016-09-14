@@ -1,0 +1,148 @@
+<!DOCTYPE HTML>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0 minimal-ui"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+<title>App - Postos Gazoli</title>
+
+<link href="styles/style.css"     		 rel="stylesheet" type="text/css">
+<link href="styles/framework.css" 		 rel="stylesheet" type="text/css">
+<link href="styles/owl.theme.css" 		 rel="stylesheet" type="text/css">
+<link href="styles/font-awesome.css"	 rel="stylesheet" type="text/css">
+<link href="styles/jquery-ui.css"	 rel="stylesheet" type="text/css">
+
+
+<script type="text/javascript" src="scripts/index.js"></script>
+<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+<script type="text/javascript">
+	app.initialize();
+</script>    
+
+<script type="text/javascript" src="scripts/jquery.js"></script>
+<script type="text/javascript" src="scripts/soundmanager2.js"></script>
+
+<script type="text/javascript" src="scripts/jquery-ui.min.js"></script>
+<script type="text/javascript" src="scripts/framework.plugins.js"></script>
+<script type="text/javascript" src="scripts/custom.js"></script>
+<script type="text/javascript" src="scripts/jquery.dotanimation.min.js"></script>
+
+</head>
+<body onLoad="onDeviceReady()">
+<div id="deviceready" class="blink">
+    <span class="event listening"></span>
+    <span class="event received"></span>
+</div>
+<div id="menu-box">
+	<img src="imagens/menu-box.png" width="70">
+</div>
+<div class="header">
+<input type="hidden" id="playing" value=""> <!--Tocando no Podcast-->
+<input type="hidden" id="desc-playing" value=""> <!--Tocando no Podcast-->
+<input type="hidden" id="tracks" value=""> <!--Faixas do Podcast-->
+<input type="hidden" id="loop" value="0"> <!--Loop do Podcast-->
+<input type="hidden" id="random" value="0"> <!--Faixa Random do Podcast-->
+<input type="hidden" id="status-noticia" value="0"> <!--Se já abriu a notícia, não recarregue-->
+<input type="hidden" id="qtd-noticia" value="0">
+<input type="hidden" id="pagina-atual" value="home"> <!--Página atual-->
+
+    <div class="header-controls">
+        <a href="#" class="busca"><img src="imagens/busca-icone.png"></a>
+    </div>
+
+    <div class="menu-controls">
+        <a href="#" class="open-menu"><i class="fa fa-navicon"></i></a>
+    </div>
+		<div id="titulo-header"></div>
+		<div id="voltar-header"><img src="imagens/voltar.png"></div>
+</div>
+       
+<div class="all-elements">
+            <input class="caixa-busca" type="text">
+    <div class="snap-drawers">
+        
+        <div class="snap-drawer snap-drawer-left">            
+            <div class="sidebar-divider">
+                MENU
+            </div>
+    <ul class="sidebar-navigation">
+        <li>
+        <a class="home" href="#"><i class="fa fa-home"></i>HOME<i style="visibility:hidden" class="fa fa-plus"></i></a>
+        </li>
+        <li>
+        <a class="posto" href="#"><i class="fa fa-automobile"></i>AUTO POSTO<i style="visibility:hidden" class="fa fa-plus"></i></a>
+        </li>
+        
+      
+        <li>
+        <a class="mensagem" href="#"><i class="fa fa-envelope-o"></i>MENSAGEM PARA O POSTO<i style="visibility:hidden" class="fa fa-plus"></i></a>
+        </li>
+        <li>
+        <a class="notificacoes" href="#"><i class="fa fa-gear"></i>NOTIFICAÇÕES<i style="visibility:hidden" class="fa fa-plus"></i></a>
+        </li>
+
+    </ul>                        
+
+        </div>    
+        
+        
+            <div class="snap-drawer snap-drawer-right">           
+            <div class="sidebar-divider side-busca">
+                <span>Digite a sua busca</span>
+            </div>
+                
+                <div id="resultado">
+                </div>
+			</div>        
+        
+           
+    </div>
+    
+        <div id="box-atualizar"><img src="imagens/loader-noticias2.gif"> Atualizar Notícias</div>   
+    
+    <div id="content" class="snap-content bg-metropole">
+
+
+		<div id="home">
+
+            <img src="imagens/logo.png"><br>
+           
+        </div>
+		<div id="posto" style="display:none;">
+            
+        </div>
+      
+ 
+		<div id="mensagem" style="display:none;">
+        	<input id="os" type="hidden" name="os">
+        	<input id="nome" type="text" name="nome" value="Informe o seu nome" onfocus="this.value = ''; this.style.color ='#FFFFFF'" onblur="if (this.value=='') this.style.color ='#cfbe9b';  if (this.value!='') this.style.color ='#FFFFFF'; if (this.value=='') this.value = this.defaultValue;  ">
+<!--        	<input id="telefone" type="tel" name="telefone" value="(DD) Telefone" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" onfocus="this.value = ''; this.style.color ='#FFFFFF'" onblur="if (this.value=='') this.style.color ='#cfbe9b';  if (this.value!='') this.style.color ='#FFFFFF'; if (this.value=='') this.value = this.defaultValue;  ">
+        	<input id="email" type="email" name="email" value="Seunome@seuemail.com" onfocus="this.value = ''; this.style.color ='#FFFFFF'" onblur="if (this.value=='') this.style.color ='#cfbe9b';  if (this.value!='') this.style.color ='#FFFFFF'; if (this.value=='') this.value = this.defaultValue;  ">
+-->            <select id="programa" name="programa">
+            	<option value="">Escolha o Auto Posto</option>
+                <option value="">Oswaldo Cruz</option>
+            </select>
+            <textarea id="campo_mensagem" onfocus="this.value = ''; this.style.color ='#FFFFFF'" onblur="if (this.value=='') this.style.color ='#cfbe9b';  if (this.value!='') this.style.color ='#FFFFFF'; if (this.value=='') this.value = 'Mensagem';">Mensagem</textarea>
+            <span class="limite">Limite: <strong>500</strong></span><br><br>
+			<div class="loading_mensagem" style="display:none;"><img src="imagens/loader.gif"></div>
+            <input id="envia_mensagem" type="button" value="ENVIAR">
+        </div>
+
+ 
+
+
+		<div id="notificacoes" style="display:none;">
+          <div id="area-notificacoes">
+          Deseja receber notificações a cada nova notícia?<br><br>
+          
+                  <div class="radios"></div>
+          
+          </div>
+        </div>
+
+
+      </div>
+</div>
+
+</body>
