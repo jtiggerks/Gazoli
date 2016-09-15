@@ -39,6 +39,15 @@ var app = {
 			var Pushbots = PushbotsPlugin.initialize("57d9ef734a9efa68228b489f", {"android":{"sender_id":"298683186474"}});
 
 
+            if(PushbotsPlugin.isAndroid()){
+                PushbotsPlugin.initializeAndroid("57d9ef734a9efa68228b489f", "298683186474");
+            }
+            
+            if(PushbotsPlugin.isiOS()){
+                PushbotsPlugin.initializeiOS("57d9ef734a9efa68228b489f");
+            }
+
+            
 			PushbotsPlugin.on("notification:clicked", function(data){
 				alert(("clicked:" + JSON.stringify(data));
 			});
