@@ -36,7 +36,7 @@ var app = {
 
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-			var Pushbots = PushbotsPlugin.initialize("57d9ef734a9efa68228b489f", {"android":{"sender_id":"308340350013"}});
+			var Pushbots = PushbotsPlugin.initialize("57d9ef734a9efa68228b489f", {"android":{"sender_id":"298683186474"}});
 
 
 			PushbotsPlugin.on("notification:clicked", function(data){
