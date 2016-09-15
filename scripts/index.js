@@ -36,8 +36,10 @@ var app = {
 
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-			var Pushbots = PushbotsPlugin.initialize("57d9ef734a9efa68228b489f", {"android":{"sender_id":"298683186474"}});
-
+            
+          
+            window.plugins.PushbotsPlugin.initialize("57d9ef734a9efa68228b489f", {"android":{"sender_id":"298683186474"}});
+             
 
             if(PushbotsPlugin.isAndroid()){
                 PushbotsPlugin.initializeAndroid("57d9ef734a9efa68228b489f", "298683186474");
@@ -47,42 +49,32 @@ var app = {
                 PushbotsPlugin.initializeiOS("57d9ef734a9efa68228b489f");
             }
 
+            PushbotsPlugin.on("registered", function(token){
+                if((localStorage.getItem('notificacoes') == 1)){
+                    PushbotsPlugin.untag("active");
+                    PushbotsPlugin.tag("inactive");
+                }
+                else{
+                    PushbotsPlugin.untag("inactive");
+                    PushbotsPlugin.tag("active");
+                }
+
+            });
             
-			PushbotsPlugin.on("notification:clicked", function(data){
-				alert(("clicked:" + JSON.stringify(data));
-			});
-
-
-
-			Pushbots.on("registered", function(token){
-				if((localStorage.getItem('notificacoes') == 1)){
-					Pushbots.untag("active");
-					Pushbots.tag("inactive");
-				}
-				else{
-					Pushbots.untag("inactive");
-					Pushbots.tag("active");
-				}
-
-		
-
-
-			});
-			
-			Pushbots.getRegistrationId(function(token){
-				if((localStorage.getItem('notificacoes') == 1)){
-					Pushbots.untag("active");
-					Pushbots.tag("inactive");
-				}
-				else{
-					Pushbots.untag("inactive");
-					Pushbots.tag("active");
-				}
-			});
+            PushbotsPlugin.getRegistrationId(function(token){
+                if((localStorage.getItem('notificacoes') == 1)){
+                    PushbotsPlugin.untag("active");
+                    PushbotsPlugin.tag("inactive");
+                }
+                else{
+                    PushbotsPlugin.untag("inactive");
+                    PushbotsPlugin.tag("active");
+                }
+            });
 
 
 /*
-*/			},
+*/          },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         var parentElement = document.getElementById(id);
