@@ -65,10 +65,11 @@ var app = {
             // Should be called once the notification is clicked
             window.plugins.PushbotsPlugin.on("notification:clicked", function(data){
                 v = JSON.stringify(data);
-                alert(JSON.stringify(data));        
-                alert(v.message);
 
-       
+                 var obj = JSON.parse(v);
+                 alert(obj.message);
+
+                telapreco();
 
             });
 
@@ -83,3 +84,10 @@ var app = {
         var parentElement = document.getElementById(id);
     }
 };
+
+function telapreco()
+{
+
+    alert('funcao ok');
+    
+}
