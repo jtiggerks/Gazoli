@@ -42,9 +42,20 @@ var app = {
             window.plugins.PushbotsPlugin.initialize("57d9ef734a9efa68228b489f", {"android":{"sender_id":"298683186474"}});
              
           
+           // Should be called once app receive the notification
+            window.plugins.PushbotsPlugin.on("notification:received", function(data){
+                    
+            });
+
+            // Should be called once the notification is clicked
+            window.plugins.PushbotsPlugin.on("notification:clicked", function(data){
+                 alert("clicked:" + JSON.stringify(data));
+            });
+
+                      
             // First time registration
             // This will be called on token registration/refresh with Android and with every runtime with iOS
-            window.plugins.PushbotsPlugin.on("registered", function(token){
+            window.plugins.PushbotsPlugin.on("registered", function(token){    
 
                 if((localStorage.getItem('notificacoes') == 1)){
                     window.plugins.PushbotsPlugin.untag("active");
@@ -69,30 +80,7 @@ var app = {
             });
 
 
-            // Should be called once app receive the notification
-            window.plugins.PushbotsPlugin.on("notification:received", function(data){
-                
-            });
-
-            // Should be called once the notification is clicked
-            window.plugins.PushbotsPlugin.on("notification:clicked", function(data){
-                
-                     v = JSON.stringify(data)
-
-                    alert(v['mensage']);
-
-                    $('#pagina-atual').val('POSTOS GAZOLI');
-                    $('#titulo-header').html("<div style='margin-left: -70px;height: 35px;'>POSTOS GAZOLI</div>");
-                    $('.header-controls').hide();
-                    $("#voltar-header").hide();
-                        e.preventDefault();
-                        
-                        var hideDeffered = $('#notificacoes, #vc-reporter, #podcast, #home, #podcast-player, #noticias, #abre-noticia, #radio, #mensagem').hide("fade", { direction: "up", easing: 'easeInOutBack' }, 50);
-                        hideDeffered.promise().done(function() {
-                            $('#posto').show("fade", { direction: "right", easing: 'easeInOutBack' }, 1000);
-                      });
-
-            });
+ 
  
  
 
