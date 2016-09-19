@@ -47,13 +47,19 @@ var app = {
             }
 
 
-// Should be called once the notification is clicked
-window.plugins.PushbotsPlugin.on("notification:clicked", function(data){
-    console.log("clicked:" + JSON.stringify(data));
-});
+            // Should be called once the notification is clicked
+           PushbotsPlugin.on("notification:clicked", function(data){
+                alert("clicked:" + JSON.stringify(data));
+                console.log("2222");
+            });
 
 
             PushbotsPlugin.on("registered", function(token){
+
+                alert(22);
+                console.log("Registration Id2:" + token);
+
+
                 if((localStorage.getItem('notificacoes') == 1)){
                     PushbotsPlugin.untag("active");
                     PushbotsPlugin.tag("inactive");
@@ -66,6 +72,10 @@ window.plugins.PushbotsPlugin.on("notification:clicked", function(data){
             });
             
             PushbotsPlugin.getRegistrationId(function(token){
+
+                alert(112);
+                console.log("Registration Id:" + token);
+
                 if((localStorage.getItem('notificacoes') == 1)){
                     PushbotsPlugin.untag("active");
                     PushbotsPlugin.tag("inactive");
