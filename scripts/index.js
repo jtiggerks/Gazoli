@@ -36,53 +36,22 @@ var app = {
 
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-         
- alert('etaaa');
-
-var Pushbots = PushbotsPlugin.initialize("57d9ef734a9efa68228b489f", {"android":{"sender_id":"298683186474"}});
-
-
-                    // Should be called once the notification is clicked
-                   window.plugins.PushbotsPlugin.on("notification:clicked", function(data){
-                        alert("clicked:" + JSON.stringify(data));
-                        console.log("2222");
-                    });
-                Pushbots.on("notification:clicked", function(data){
-                     alert("clicked:" + JSON.stringify(data));
-                });
-
-            window.plugins.PushbotsPlugin.on("registered", function(token){
-
-                alert(22);
-                console.log("Registration Id2:" + token);
-
-
-                if((localStorage.getItem('notificacoes') == 1)){
-                    window.plugins.PushbotsPlugin.untag("active");
-                    window.plugins.window.plugins.PushbotsPlugin.tag("inactive");
-                }
-                else{
-                    window.plugins.PushbotsPlugin.untag("inactive");
-                    window.plugins.PushbotsPlugin.tag("active");
-                }
-
-            });
             
-            window.plugins.PushbotsPlugin.getRegistrationId(function(token){
-
-                alert(112);
-                console.log("Registration Id:" + token);
-
-                if((localStorage.getItem('notificacoes') == 1)){
-                    window.plugins.PushbotsPlugin.untag("active");
-                    window.plugins.PushbotsPlugin.tag("inactive");
-                }
-                else{
-                    window.plugins.PushbotsPlugin.untag("inactive");
-                    window.plugins.PushbotsPlugin.tag("active");
-                }
+          
+            window.plugins.PushbotsPlugin.initialize("57d9ef734a9efa68228b489f", {"android":{"sender_id":"298683186474"}});
+             
+          
+            // First time registration
+            // This will be called on token registration/refresh with Android and with every runtime with iOS
+            window.plugins.PushbotsPlugin.on("registered", function(token){
+                alert("Registration Id:" + token);
             });
 
+            window.plugins.PushbotsPlugin.getRegistrationId(function(token){
+                alert("Registration Id:" + token);
+            });
+
+ 
 
 /*
 */          },

@@ -74,8 +74,6 @@
     <gap:plugin name="org.apache.cordova.splashscreen"  source="npm" />
 	<gap:plugin name="cordova-plugin-whitelist" source="npm" version="1.0.0" />
 	<gap:plugin name="pushbots-cordova-plugin" source="npm" />
-    
-	<gap:plugin name="nl.kingsquare.background-audio" source="pgb" version="1.0.0" />
 	<gap:plugin name="org.apache.cordova.statusbar" source="npm"/>
 	
 	
