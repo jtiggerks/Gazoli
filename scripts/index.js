@@ -37,52 +37,49 @@ var app = {
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
          
+ alert('etaaa');
 
-            if(PushbotsPlugin.isAndroid()){
-                PushbotsPlugin.initializeAndroid("57d9ef734a9efa68228b489f", "298683186474");
-            }
-            
-            if(PushbotsPlugin.isiOS()){
-                PushbotsPlugin.initializeiOS("57d9ef734a9efa68228b489f");
-            }
+var Pushbots = PushbotsPlugin.initialize("57d9ef734a9efa68228b489f", {"android":{"sender_id":"298683186474"}});
 
 
-            // Should be called once the notification is clicked
-           PushbotsPlugin.on("notification:clicked", function(data){
-                alert("clicked:" + JSON.stringify(data));
-                console.log("2222");
-            });
+                    // Should be called once the notification is clicked
+                   window.plugins.PushbotsPlugin.on("notification:clicked", function(data){
+                        alert("clicked:" + JSON.stringify(data));
+                        console.log("2222");
+                    });
+                Pushbots.on("notification:clicked", function(data){
+                     alert("clicked:" + JSON.stringify(data));
+                });
 
-
-            PushbotsPlugin.on("registered", function(token){
+            window.plugins.PushbotsPlugin.on("registered", function(token){
 
                 alert(22);
                 console.log("Registration Id2:" + token);
 
 
                 if((localStorage.getItem('notificacoes') == 1)){
-                    PushbotsPlugin.untag("active");
-                    PushbotsPlugin.tag("inactive");
+                    window.plugins.PushbotsPlugin.untag("active");
+                    window.plugins.window.plugins.PushbotsPlugin.tag("inactive");
                 }
                 else{
-                    PushbotsPlugin.untag("inactive");
-                    PushbotsPlugin.tag("active");
+                    window.plugins.PushbotsPlugin.untag("inactive");
+                    window.plugins.PushbotsPlugin.tag("active");
                 }
 
             });
             
-            PushbotsPlugin.getRegistrationId(function(token){
+            window.plugins.PushbotsPlugin.getRegistrationId(function(token){
 
                 alert(112);
                 console.log("Registration Id:" + token);
 
                 if((localStorage.getItem('notificacoes') == 1)){
-                    PushbotsPlugin.untag("active");
-                    PushbotsPlugin.tag("inactive");
+                    window.plugins.PushbotsPlugin.untag("active");
+                    window.plugins.PushbotsPlugin.tag("inactive");
                 }
                 else{
-                    PushbotsPlugin.untag("inactive");
-                    PushbotsPlugin.tag("active");
+                    window.plugins.PushbotsPlugin.untag("inactive");
+                    window.plugins.PushbotsPlugin.tag("active");
                 }
             });
 
