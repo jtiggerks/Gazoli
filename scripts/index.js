@@ -74,10 +74,26 @@ var app = {
             });
 
             PushbotsPlugin.debug(true);
-            
+
+            // Should be called once app receive the notification
+            PushbotsPlugin.on("notification:received", function(data){
+                console.log("received:" + JSON.stringify(data));
+            });
+
             // Should be called once the notification is clicked
             PushbotsPlugin.on("notification:clicked", function(data){
-               alert("clicked:" + JSON.stringify(data));
+                console.log("clicked:" + JSON.stringify(data));
+            });
+
+
+            // Should be called once app receive the notification
+            window.plugins.PushbotsPlugin.on("notification:received", function(data){
+                console.log("received:" + JSON.stringify(data));
+            });
+
+            // Should be called once the notification is clicked
+            window.plugins.PushbotsPlugin.on("notification:clicked", function(data){
+                console.log("clicked:" + JSON.stringify(data));
             });
 
 
