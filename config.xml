@@ -2,11 +2,11 @@
 
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
 <!-- id        = "com.interflywebsolutions.iplayer" -->
-<!--
+ 
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.interflywebsolutions.iplayer"
-        version   = "2.1.4"> -->
+        id        = "com.postosgazoli.oswaldocruz"
+        version   = "2.1.4"> 
 
     <name>Auto Posto Brasil</name>
 
