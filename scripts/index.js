@@ -38,12 +38,12 @@ var app = {
         app.receivedEvent('deviceready');
             
           
-            alert(0);
-            
+             
+
             window.plugins.PushbotsPlugin.initialize("57d9ef734a9efa68228b489f", {"android":{"sender_id":"298683186474"}});
             
 
-            alert(1);
+          
           
             // First time registration
             // This will be called on token registration/refresh with Android and with every runtime with iOS
@@ -54,7 +54,7 @@ var app = {
             window.plugins.PushbotsPlugin.getRegistrationId(function(token){
                 alert("Registration Id:" + token);
             });
-            alert(2);
+           
 
             // Should be called once app receive the notification
             window.plugins.PushbotsPlugin.on("notification:received", function(data){
@@ -63,11 +63,25 @@ var app = {
 
             // Should be called once the notification is clicked
             window.plugins.PushbotsPlugin.on("notification:clicked", function(data){
-                alert("clicked:" + JSON.stringify(data));
+                v = JSON.stringify(data);
+
+                alert(v['message']);
+
+                $('#pagina-atual').val('POSTOS GAZOLI');
+                $('#titulo-header').html("<div style='margin-left: -70px;height: 35px;'>POSTOS GAZOLI</div>");
+                $('.header-controls').hide();
+                $("#voltar-header").hide();
+                    e.preventDefault();                    
+                    var hideDeffered = $('#notificacoes, #vc-reporter, #podcast, #home, #podcast-player, #noticias, #abre-noticia, #radio, #mensagem').hide("fade", { direction: "up", easing: 'easeInOutBack' }, 50);
+                    hideDeffered.promise().done(function() {
+                        $('#posto').show("fade", { direction: "right", easing: 'easeInOutBack' }, 1000);
+                  });
+
+
             });
 
 
-            alert(3);
+           
 
 
 /*
