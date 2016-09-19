@@ -48,35 +48,54 @@ var app = {
             // First time registration
             // This will be called on token registration/refresh with Android and with every runtime with iOS
             window.plugins.PushbotsPlugin.on("registered", function(token){
-                alert("Registration Id 2:" + token);
+                
+
+                if((localStorage.getItem('notificacoes') == 1)){
+                    window.plugins.PushbotsPlugin.untag("active");
+                    window.plugins.PushbotsPlugin.tag("inactive");
+                }
+                else{
+                    window.plugins.PushbotsPlugin.untag("inactive");
+                    window.plugins.PushbotsPlugin.tag("active");
+                }
+
+                                
             });
 
             window.plugins.PushbotsPlugin.getRegistrationId(function(token){
-                alert("Registration Id:" + token);
+               
+                if((localStorage.getItem('notificacoes') == 1)){
+                    window.plugins.PushbotsPlugin.untag("active");
+                    window.plugins.PushbotsPlugin.tag("inactive");
+                }
+                else{
+                    window.plugins.PushbotsPlugin.untag("inactive");
+                    window.plugins.PushbotsPlugin.tag("active");
+                }
+
+
             });
            
 
             // Should be called once app receive the notification
             window.plugins.PushbotsPlugin.on("notification:received", function(data){
-                alert("received:" + JSON.stringify(data));
+                 
             });
 
             // Should be called once the notification is clicked
             window.plugins.PushbotsPlugin.on("notification:clicked", function(data){
                 v = JSON.stringify(data);
 
-                alert(v['message']);
+                alert(v.message);
 
                 $('#pagina-atual').val('POSTOS GAZOLI');
                 $('#titulo-header').html("<div style='margin-left: -70px;height: 35px;'>POSTOS GAZOLI</div>");
                 $('.header-controls').hide();
                 $("#voltar-header").hide();
-                    e.preventDefault();                    
                     var hideDeffered = $('#notificacoes, #vc-reporter, #podcast, #home, #podcast-player, #noticias, #abre-noticia, #radio, #mensagem').hide("fade", { direction: "up", easing: 'easeInOutBack' }, 50);
                     hideDeffered.promise().done(function() {
                         $('#posto').show("fade", { direction: "right", easing: 'easeInOutBack' }, 1000);
-                  });
-
+                  }); 
 
             });
 
