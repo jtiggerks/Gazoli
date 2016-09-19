@@ -2,20 +2,19 @@
 
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
 <!-- id        = "com.interflywebsolutions.iplayer" -->
- 
+
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.postosgazoli.oswaldocruz"
-        version   = "2.1.4"> 
+        id        = "com.interflywebsolutions.iplayer"
+        version   = "2.1.4">
 
-    <name>Auto Posto Brasil</name>
+    <name>Postos Gazoli</name>
 
     <description>
-        Aplicativo dos Postos Gazoli - Cidade de Osawado Cruz.
-        Informações de promoções e demais serviços com exclusividade. 
+        
     </description>
 
-    <author href="http://perfiljt.com.br" email="jtiggerks@gmail.com">
+    <author href="" email="">
          
     </author>
 
@@ -75,6 +74,7 @@
     <gap:plugin name="org.apache.cordova.splashscreen"  source="npm" />
 	<gap:plugin name="cordova-plugin-whitelist" source="npm" version="1.0.0" />
 	<gap:plugin name="pushbots-cordova-plugin" source="npm" />
+	<gap:plugin name="nl.kingsquare.background-audio" source="pgb" version="1.0.0" />
 	<gap:plugin name="org.apache.cordova.statusbar" source="npm"/>
 	
 	
@@ -90,15 +90,13 @@
     <icon src="res/icon/android/icon-48-mdpi.png"   gap:platform="android"    gap:qualifier="mdpi" />
     <icon src="res/icon/android/icon-72-hdpi.png"   gap:platform="android"    gap:qualifier="hdpi" />
     <icon src="res/icon/android/icon-96-xhdpi.png"  gap:platform="android"    gap:qualifier="xhdpi" />
-
-
     <icon src="res/icon/ios/icon-76.png"            gap:platform="ios"        width="76" height="76" />
     <icon src="res/icon/ios/icon-120.png"            gap:platform="ios"        width="120" height="120" />
     <icon src="res/icon/ios/icon-152.png"            gap:platform="ios"        width="152" height="152" />
     <icon src="res/icon/ios/icon-57.png"            gap:platform="ios"        width="57" height="57" />
- 
-
-
+    <icon src="res/icon/ios/icon-72.png"            gap:platform="ios"        width="72" height="72" />
+    <icon src="res/icon/ios/icon-57-2x.png"         gap:platform="ios"        width="114" height="114" />
+    <icon src="res/icon/ios/icon-72-2x.png"         gap:platform="ios"        width="144" height="144" />
     <icon src="res/icon/windows-phone/icon-48.png"  gap:platform="winphone" />
     <icon src="res/icon/windows-phone/icon-173.png" gap:platform="winphone"   gap:role="background" />
 
