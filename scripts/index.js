@@ -65,17 +65,10 @@ var app = {
             // Should be called once the notification is clicked
             window.plugins.PushbotsPlugin.on("notification:clicked", function(data){
                 v = JSON.stringify(data);
-
+                alert(JSON.stringify(data));        
                 alert(v.message);
 
-                $('#pagina-atual').val('POSTOS GAZOLI');
-                $('#titulo-header').html("<div style='margin-left: -70px;height: 35px;'>POSTOS GAZOLI</div>");
-                $('.header-controls').hide();
-                $("#voltar-header").hide();
-                    var hideDeffered = $('#notificacoes, #vc-reporter, #podcast, #home, #podcast-player, #noticias, #abre-noticia, #radio, #mensagem').hide("fade", { direction: "up", easing: 'easeInOutBack' }, 50);
-                    hideDeffered.promise().done(function() {
-                        $('#posto').show("fade", { direction: "right", easing: 'easeInOutBack' }, 1000);
-                  }); 
+       
 
             });
 
