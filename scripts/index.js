@@ -50,7 +50,7 @@ var app = {
             }
 
             // Should be called once the notification is clicked
-            PushbotsPlugin.on("notification:clicked", function(data){
+            window.plugins.PushbotsPlugin.on("notification:clicked", function(data){
                alert("clicked:" + JSON.stringify(data));
             });
 
