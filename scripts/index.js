@@ -46,7 +46,7 @@ var app = {
                 PushbotsPlugin.initializeiOS("57d9ef734a9efa68228b489f");
             }
 
-            PushbotsPlugin.debug(true);
+            
 
 
 
@@ -73,7 +73,8 @@ var app = {
                 }
             });
 
-
+            PushbotsPlugin.debug(true);
+            
             // Should be called once the notification is clicked
             PushbotsPlugin.on("notification:clicked", function(data){
                alert("clicked:" + JSON.stringify(data));
