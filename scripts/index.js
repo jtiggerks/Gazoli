@@ -49,37 +49,17 @@ var app = {
             // This will be called on token registration/refresh with Android and with every runtime with iOS
             window.plugins.PushbotsPlugin.on("registered", function(token){
                 
-
-                if((localStorage.getItem('notificacoes') == 1)){
-                    window.plugins.PushbotsPlugin.untag("active");
-                    window.plugins.PushbotsPlugin.tag("inactive");
-                }
-                else{
-                    window.plugins.PushbotsPlugin.untag("inactive");
-                    window.plugins.PushbotsPlugin.tag("active");
-                }
-
-                                
             });
 
             window.plugins.PushbotsPlugin.getRegistrationId(function(token){
                
-                if((localStorage.getItem('notificacoes') == 1)){
-                    window.plugins.PushbotsPlugin.untag("active");
-                    window.plugins.PushbotsPlugin.tag("inactive");
-                }
-                else{
-                    window.plugins.PushbotsPlugin.untag("inactive");
-                    window.plugins.PushbotsPlugin.tag("active");
-                }
-
 
             });
            
 
             // Should be called once app receive the notification
             window.plugins.PushbotsPlugin.on("notification:received", function(data){
-                 
+                 alert('ufa');
             });
 
             // Should be called once the notification is clicked
