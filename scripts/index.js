@@ -48,10 +48,6 @@ var app = {
 
             PushbotsPlugin.debug(true);
 
-            // Should be called once the notification is clicked
-            PushbotsPlugin.on("notification:clicked", function(data){
-               alert("clicked:" + JSON.stringify(data));
-            });
 
 
             PushbotsPlugin.on("registered", function(token){
@@ -76,6 +72,13 @@ var app = {
                     PushbotsPlugin.tag("active");
                 }
             });
+
+
+            // Should be called once the notification is clicked
+            PushbotsPlugin.on("notification:clicked", function(data){
+               alert("clicked:" + JSON.stringify(data));
+            });
+
 
 
 /*
