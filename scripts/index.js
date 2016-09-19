@@ -1,19 +1,3 @@
-Skip to content
-This repository
-Search
-Pull requests
-Issues
-Gist
- @jtiggerks
- Unwatch 1
-  Star 0
-  Fork 0 jtiggerks/Gazoli
- Code  Issues 0  Pull requests 0  Projects 0  Wiki  Pulse  Graphs  Settings
-Tree: 592d477924 Find file Copy pathGazoli/scripts/index.js
-592d477  2 hours ago
-@jtiggerks jtiggerks dd
-1 contributor
-RawBlameHistory     74 lines (60 sloc)  2.61 KB
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -54,34 +38,7 @@ var app = {
         app.receivedEvent('deviceready');
             
           
-            window.plugins.PushbotsPlugin.initialize("57d9ef734a9efa68228b489f", {"android":{"sender_id":"298683186474"}});
-            
-
-            alert(1);
-          
-            // First time registration
-            // This will be called on token registration/refresh with Android and with every runtime with iOS
-            window.plugins.PushbotsPlugin.on("registered", function(token){
-                alert("Registration Id 2:" + token);
-            });
-
-            window.plugins.PushbotsPlugin.getRegistrationId(function(token){
-                alert("Registration Id:" + token);
-            });
-  alert(2);
-
-            // Should be called once app receive the notification
-            window.plugins.PushbotsPlugin.on("notification:received", function(data){
-                alert("received:" + JSON.stringify(data));
-            });
-
-            // Should be called once the notification is clicked
-            window.plugins.PushbotsPlugin.on("notification:clicked", function(data){
-                alert("clicked:" + JSON.stringify(data));
-            });
-
-
-   alert(3);
+                alert(1);
 
 /*
 */          },
@@ -90,5 +47,3 @@ var app = {
         var parentElement = document.getElementById(id);
     }
 };
-Contact GitHub API Training Shop Blog About
-© 2016 GitHub, Inc. Terms Privacy Security Status Help
