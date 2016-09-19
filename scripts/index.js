@@ -37,10 +37,7 @@ var app = {
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
             
-          
-            window.plugins.PushbotsPlugin.initialize("57d9ef734a9efa68228b489f", {"android":{"sender_id":"298683186474"}});
-             
-
+           
             if(PushbotsPlugin.isAndroid()){
                 PushbotsPlugin.initializeAndroid("57d9ef734a9efa68228b489f", "298683186474");
             }
@@ -49,8 +46,10 @@ var app = {
                 PushbotsPlugin.initializeiOS("57d9ef734a9efa68228b489f");
             }
 
+            PushbotsPlugin.debug(true);
+
             // Should be called once the notification is clicked
-            window.plugins.PushbotsPlugin.on("notification:clicked", function(data){
+            PushbotsPlugin.on("notification:clicked", function(data){
                alert("clicked:" + JSON.stringify(data));
             });
 
