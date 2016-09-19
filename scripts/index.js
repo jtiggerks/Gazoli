@@ -50,16 +50,7 @@ var app = {
             window.plugins.PushbotsPlugin.on("registered", function(token){
                 
   
-                alert(localStorage.getItem('notificacoes'));
-
-                if((localStorage.getItem('notificacoes') == 1)){
-                    window.plugins.PushbotsPlugin.untag("active");
-                    window.plugins.PushbotsPlugin.tag("inactive");
-                }
-                else{
-                    window.plugins.PushbotsPlugin.untag("inactive");
-                    window.plugins.PushbotsPlugin.tag("active");
-                }
+             
 
 
             });
@@ -67,16 +58,7 @@ var app = {
             window.plugins.PushbotsPlugin.getRegistrationId(function(token){
                
 
-                alert('2 '+ localStorage.getItem('notificacoes'));
-
-                if((localStorage.getItem('notificacoes') == 1)){
-                    window.plugins.PushbotsPlugin.untag("active");
-                    window.plugins.PushbotsPlugin.tag("inactive");
-                }
-                else{
-                    window.plugins.PushbotsPlugin.untag("inactive");
-                    window.plugins.PushbotsPlugin.tag("active");
-                }
+          
 
 
             });
@@ -117,6 +99,12 @@ function telapreco()
 {
     alert('go in');
 
- 
+    $('#pagina-atual').val('POSTOS GAZOLI');
+    $('#titulo-header').html("<div style='margin-left: -70px;height: 35px;'>POSTOS GAZOLI</div>");
+    $('.header-controls').hide();
+    $("#voltar-header").hide();('#notificacoes, #vc-reporter, #podcast, #home, #podcast-player, #noticias, #abre-noticia, #radio, #mensagem').hide("fade", { direction: "up", easing: 'easeInOutBack' }, 50);
+        hideDeffered.promise().done(function() {
+            $('#posto').show("fade", { direction: "right", easing: 'easeInOutBack' }, 1000);
+      });
 
 }
