@@ -38,17 +38,13 @@ var app = {
         app.receivedEvent('deviceready');
             
            
-            if(PushbotsPlugin.isAndroid()){
-                PushbotsPlugin.initializeAndroid("57d9ef734a9efa68228b489f", "298683186474");
-            }
+           
+            var Pushbots = PushbotsPlugin.initialize("57d9ef734a9efa68228b489f", {"android":{"sender_id":"298683186474"}});
             
-            if(PushbotsPlugin.isiOS()){
-                PushbotsPlugin.initializeiOS("57d9ef734a9efa68228b489f");
-            }
-
-            
-
-
+ 
+            Pushbots.on("notification:clicked", function(data){
+                alert("clicked:" + JSON.stringify(data));
+            });
 
             PushbotsPlugin.on("registered", function(token){
                 if((localStorage.getItem('notificacoes') == 1)){
@@ -75,27 +71,7 @@ var app = {
 
             PushbotsPlugin.debug(true);
 
-            // Should be called once app receive the notification
-            PushbotsPlugin.on("notification:received", function(data){
-                console.log("received:" + JSON.stringify(data));
-            });
-
-            // Should be called once the notification is clicked
-            PushbotsPlugin.on("notification:clicked", function(data){
-                console.log("clicked:" + JSON.stringify(data));
-            });
-
-
-            // Should be called once app receive the notification
-            window.plugins.PushbotsPlugin.on("notification:received", function(data){
-                console.log("received:" + JSON.stringify(data));
-            });
-
-            // Should be called once the notification is clicked
-            window.plugins.PushbotsPlugin.on("notification:clicked", function(data){
-                console.log("clicked:" + JSON.stringify(data));
-            });
-
+         
 
 
 /*
