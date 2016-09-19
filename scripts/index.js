@@ -49,6 +49,12 @@ var app = {
                 PushbotsPlugin.initializeiOS("57d9ef734a9efa68228b489f");
             }
 
+            // Should be called once the notification is clicked
+            PushbotsPlugin.on("notification:clicked", function(data){
+               alert("clicked:" + JSON.stringify(data));
+            });
+
+
             PushbotsPlugin.on("registered", function(token){
                 if((localStorage.getItem('notificacoes') == 1)){
                     PushbotsPlugin.untag("active");
