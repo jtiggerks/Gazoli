@@ -44,12 +44,24 @@ var app = {
             // First time registration
             // This will be called on token registration/refresh with Android and with every runtime with iOS
             window.plugins.PushbotsPlugin.on("registered", function(token){
-                alert("Registration Id:" + token);
+                alert("Registration Id 2:" + token);
             });
 
             window.plugins.PushbotsPlugin.getRegistrationId(function(token){
                 alert("Registration Id:" + token);
             });
+
+
+            // Should be called once app receive the notification
+            window.plugins.PushbotsPlugin.on("notification:received", function(data){
+                alert("received:" + JSON.stringify(data));
+            });
+
+            // Should be called once the notification is clicked
+            window.plugins.PushbotsPlugin.on("notification:clicked", function(data){
+                alert("clicked:" + JSON.stringify(data));
+            });
+
 
  
 
