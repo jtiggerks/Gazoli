@@ -46,6 +46,13 @@ var app = {
                 PushbotsPlugin.initializeiOS("57d9ef734a9efa68228b489f");
             }
 
+
+// Should be called once the notification is clicked
+window.plugins.PushbotsPlugin.on("notification:clicked", function(data){
+    console.log("clicked:" + JSON.stringify(data));
+});
+
+
             PushbotsPlugin.on("registered", function(token){
                 if((localStorage.getItem('notificacoes') == 1)){
                     PushbotsPlugin.untag("active");
@@ -58,10 +65,6 @@ var app = {
 
             });
             
-         
-            PushbotsPlugin.onNotificationClick(myMsgClickHandler);
-
-
             PushbotsPlugin.getRegistrationId(function(token){
                 if((localStorage.getItem('notificacoes') == 1)){
                     PushbotsPlugin.untag("active");
@@ -81,8 +84,3 @@ var app = {
         var parentElement = document.getElementById(id);
     }
 };
-
-   function myMsgClickHandler(msg){
-        console.log("Clicked On notification" + JSON.stringify(msg));
-        alert(JSON.stringify(msg));
-    }
