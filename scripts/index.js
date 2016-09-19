@@ -36,15 +36,15 @@ var app = {
 
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+         
+
+            if(PushbotsPlugin.isAndroid()){
+                PushbotsPlugin.initializeAndroid("57d9ef734a9efa68228b489f", "298683186474");
+            }
             
-           
-           
-            var Pushbots = PushbotsPlugin.initialize("57d9ef734a9efa68228b489f", {"android":{"sender_id":"298683186474"}});
-            
- 
-            Pushbots.on("notification:clicked", function(data){
-                alert("clicked:" + JSON.stringify(data));
-            });
+            if(PushbotsPlugin.isiOS()){
+                PushbotsPlugin.initializeiOS("57d9ef734a9efa68228b489f");
+            }
 
             PushbotsPlugin.on("registered", function(token){
                 if((localStorage.getItem('notificacoes') == 1)){
@@ -58,6 +58,10 @@ var app = {
 
             });
             
+         
+            PushbotsPlugin.onNotificationClick(myMsgClickHandler);
+
+
             PushbotsPlugin.getRegistrationId(function(token){
                 if((localStorage.getItem('notificacoes') == 1)){
                     PushbotsPlugin.untag("active");
@@ -69,10 +73,6 @@ var app = {
                 }
             });
 
-            PushbotsPlugin.debug(true);
-
-         
-
 
 /*
 */          },
@@ -81,3 +81,8 @@ var app = {
         var parentElement = document.getElementById(id);
     }
 };
+
+   function myMsgClickHandler(msg){
+        console.log("Clicked On notification" + JSON.stringify(msg));
+        alert(JSON.stringify(msg));
+    }
