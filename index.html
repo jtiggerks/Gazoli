@@ -18,6 +18,8 @@
 <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 <script type="text/javascript">
 	app.initialize();
+
+
 </script>    
 
 
@@ -46,15 +48,12 @@
 <input type="hidden" id="qtd-noticia" value="0">
 <input type="hidden" id="pagina-atual" value="home"> <!--Página atual-->
 
-    <div class="header-controls">
-        <a href="#" class="busca"><img src="imagens/busca-icone.png"></a>
-    </div>
-
+  
     <div class="menu-controls">
         <a href="#" class="open-menu"><i class="fa fa-navicon"></i></a>
     </div>
-		<div id="titulo-header"></div>
-		<div id="voltar-header"><img src="imagens/voltar.png"></div>
+        <div id="titulo-header"><div style='margin-left: -50px;height: 35px;'>AUTO POSTO BRASIL</div></div>
+		 
 </div>
        
 <div class="all-elements">
@@ -98,42 +97,47 @@
            
     </div>
     
-        <div id="box-atualizar"><img src="imagens/loader-noticias2.gif"> Atualizar Notícias</div>   
+    <div id="box-atualizar"><img src="imagens/loader-noticias2.gif"> Atualizar Promoções</div>   
     
     <div id="content" class="snap-content bg-metropole">
 
 
 		<div id="home">
 
-            <img src="imagens/logo.png"><br><br>
-           <div style="text-align: center;
-                color: #000;
-                font-size: 20px;
-                line-height: 30px; font-family: 'GothamBookRegular';">
-            Av. Brasil, 1.778 Centro
-            <br>
-             Oswaldo Cruz - SP
-            <br>
-           (18) 3528-1820
+           <div id="imghome2">
+               <img src="imagens/logo.png"><br><br>
+               <div style="text-align: center;
+                    color: #000;
+                    font-size: 20px;
+                    line-height: 30px; font-family: 'GothamBookRegular';">
+                Av. Brasil, 1.778 Centro
+                <br>
+                 Oswaldo Cruz - SP
+                <br>
+               (18) 3528-1820
+               </div>
+           
            </div>
 
-        
+           <div id="imghome"></div>
+
+
 
         </div>
  
  
 		<div id="mensagem" style="display:none;">
-        	<input id="os" type="hidden" name="os">
-        	<input id="nome" type="text" name="nome" value="Informe o seu nome" onfocus="this.value = ''; this.style.color ='#FFFFFF'" onblur="if (this.value=='') this.style.color ='#cfbe9b';  if (this.value!='') this.style.color ='#FFFFFF'; if (this.value=='') this.value = this.defaultValue;  ">
-<!--        	<input id="telefone" type="tel" name="telefone" value="(DD) Telefone" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" onfocus="this.value = ''; this.style.color ='#FFFFFF'" onblur="if (this.value=='') this.style.color ='#cfbe9b';  if (this.value!='') this.style.color ='#FFFFFF'; if (this.value=='') this.value = this.defaultValue;  ">
-        	<input id="email" type="email" name="email" value="Seunome@seuemail.com" onfocus="this.value = ''; this.style.color ='#FFFFFF'" onblur="if (this.value=='') this.style.color ='#cfbe9b';  if (this.value!='') this.style.color ='#FFFFFF'; if (this.value=='') this.value = this.defaultValue;  ">
--->            <select id="programa" name="programa">
-            	<option value="">Escolha o Auto Posto</option>
-                <option value="">Oswaldo Cruz</option>
+            <input id="os" type="hidden" name="os">
+            <input id="nome" type="text" name="nome" value="Informe o seu nome" onfocus="this.value = ''; this.style.color ='#FFFFFF'" onblur="if (this.value=='') this.style.color ='#cfbe9b';  if (this.value!='') this.style.color ='#FFFFFF'; if (this.value=='') this.value = this.defaultValue;  ">
+           <input id="telefone" type="tel" name="telefone" value="(DD) Telefone" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" onfocus="this.value = ''; this.style.color ='#FFFFFF'" onblur="if (this.value=='') this.style.color ='#cfbe9b';  if (this.value!='') this.style.color ='#FFFFFF'; if (this.value=='') this.value = this.defaultValue;  ">
+            <input id="email" type="email" name="email" value="Seunome@seuemail.com" onfocus="this.value = ''; this.style.color ='#FFFFFF'" onblur="if (this.value=='') this.style.color ='#cfbe9b';  if (this.value!='') this.style.color ='#FFFFFF'; if (this.value=='') this.value = this.defaultValue;  ">
+           <select id="programa" name="programa">
+                <option value="">Escolha o Auto Posto</option>
+                <option value="23">Oswaldo Cruz</option>
             </select>
             <textarea id="campo_mensagem" onfocus="this.value = ''; this.style.color ='#FFFFFF'" onblur="if (this.value=='') this.style.color ='#cfbe9b';  if (this.value!='') this.style.color ='#FFFFFF'; if (this.value=='') this.value = 'Mensagem';">Mensagem</textarea>
             <span class="limite">Limite: <strong>500</strong></span><br><br>
-			<div class="loading_mensagem" style="display:none;"><img src="imagens/loader.gif"></div>
+            <div class="loading_mensagem" style="display:none;"><img src="imagens/loader.gif"></div>
             <input id="envia_mensagem" type="button" value="ENVIAR">
         </div>
 
@@ -152,5 +156,44 @@
 
       </div>
 </div>
+<script>
+
+(function ($) {
+$(document).ready(function() {
+
+$.ajax({
+    url: 'http://www.postosgazoli.com.br/painel/bannerhome.php?t='+ (new Date()).getTime(),
+    cache:false,
+    type: 'POST',
+    dataType: 'json',
+    xhrFields: {
+      withCredentials: false
+    },
+    async: true,    
+    timeout: 2000,
+    success: function(results){
+
+      if(results.length > 0)
+      {     $('#imghome').fadeIn();
+            $('#imghome2').hide();
+          $.each(results,function(key,value)
+          {  
+              $('#imghome').append('<img src="http://www.postosgazoli.com.br/files/'+value.diretorio+'" width="100%" /> ');
+          });
+      }else{
+             $('#imghome').hide();
+             $('#imghome2').show();
+      }
+    
+    },
+    error: function() {
+       
+    }
+}); 
+
+});
+
+}(jQuery));
+</script>
 
 </body>

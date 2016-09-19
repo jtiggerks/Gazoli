@@ -51,7 +51,7 @@
     <div class="menu-controls">
         <a href="#" class="open-menu"><i class="fa fa-navicon"></i></a>
     </div>
-        <div id="titulo-header"><div style='margin-left: -70px;height: 35px;'>AUTO POSTO BRASIL</div></div>
+        <div id="titulo-header"><div style='margin-left: -50px;height: 35px;'>AUTO POSTO BRASIL</div></div>
        
 </div>
        
@@ -91,22 +91,31 @@
     
     <div id="content" class="snap-content bg-metropole">
 
-  
-        <div id="posto" style="display:none;">
-                    
-                s 
+    <style>
+    #imghome h2{color: #292b2b}
+     #imghome h2 span{color: #ec1624}
+
+    </style>
+   <div id="home">
+        <div id="imghome" style="padding: 64px;" >
+                          
+                 <h2>Etanol <span id="i1"></span></h2>
+                 <h2>Gasolina <span id="i2"></span></h2>
+                 <h2>Diesel <span id="i3"></span></h2>                 
+                 <h2>Diesel S10 <span id="i4"></span></h2>
+
 
         </div>
-      
+    </div>  
  
         <div id="mensagem" style="display:none;">
             <input id="os" type="hidden" name="os">
             <input id="nome" type="text" name="nome" value="Informe o seu nome" onfocus="this.value = ''; this.style.color ='#FFFFFF'" onblur="if (this.value=='') this.style.color ='#cfbe9b';  if (this.value!='') this.style.color ='#FFFFFF'; if (this.value=='') this.value = this.defaultValue;  ">
-<!--            <input id="telefone" type="tel" name="telefone" value="(DD) Telefone" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" onfocus="this.value = ''; this.style.color ='#FFFFFF'" onblur="if (this.value=='') this.style.color ='#cfbe9b';  if (this.value!='') this.style.color ='#FFFFFF'; if (this.value=='') this.value = this.defaultValue;  ">
+           <input id="telefone" type="tel" name="telefone" value="(DD) Telefone" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" onfocus="this.value = ''; this.style.color ='#FFFFFF'" onblur="if (this.value=='') this.style.color ='#cfbe9b';  if (this.value!='') this.style.color ='#FFFFFF'; if (this.value=='') this.value = this.defaultValue;  ">
             <input id="email" type="email" name="email" value="Seunome@seuemail.com" onfocus="this.value = ''; this.style.color ='#FFFFFF'" onblur="if (this.value=='') this.style.color ='#cfbe9b';  if (this.value!='') this.style.color ='#FFFFFF'; if (this.value=='') this.value = this.defaultValue;  ">
--->            <select id="programa" name="programa">
+           <select id="programa" name="programa">
                 <option value="">Escolha o Auto Posto</option>
-                <option value="">Oswaldo Cruz</option>
+                <option value="23">Oswaldo Cruz</option>
             </select>
             <textarea id="campo_mensagem" onfocus="this.value = ''; this.style.color ='#FFFFFF'" onblur="if (this.value=='') this.style.color ='#cfbe9b';  if (this.value!='') this.style.color ='#FFFFFF'; if (this.value=='') this.value = 'Mensagem';">Mensagem</textarea>
             <span class="limite">Limite: <strong>500</strong></span><br><br>
@@ -129,5 +138,39 @@
 
       </div>
 </div>
+<script>
 
+(function ($) {
+$(document).ready(function() {
+
+$.ajax({
+    url: 'http://www.postosgazoli.com.br/painel/preco.php?t='+ (new Date()).getTime(),
+    cache:false,
+    type: 'POST',
+    dataType: 'json',
+    xhrFields: {
+      withCredentials: false
+    },
+    async: true, 
+    success: function(results){
+ 
+          $.each(results,function(key,value)
+          {  
+              $('#i1').html('R$ '+value.etanol);
+              $('#i2').html('R$ '+value.gasolina);
+              $('#i3').html('R$ '+value.diesel);
+              $('#i4').html('R$ '+value.diesels10);
+          });
+      
+    
+    },
+    error: function() {
+       
+    }
+}); 
+
+});
+
+}(jQuery));
+</script>
 </body>

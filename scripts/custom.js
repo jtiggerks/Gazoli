@@ -1,5 +1,8 @@
 (function ($) {
 $(document).ready(function() {
+
+
+
 $('#menu-box').show();
 $("#menu-box").delay(1500).effect("pulsate",{ times:5}, 2500).delay(1400).fadeOut(1000);
 
@@ -7,7 +10,7 @@ $('#content').scroll(function(){
         if($("#noticias").css('display') != 'none'){
 		var elem = $('#content');            
 		if (elem.scrollTop() > 50){
-			$("#box-atualizar").show("slide", { direction: "down", easing: 'easeInOutBack' }, 700);
+			//$("#box-atualizar").show("slide", { direction: "down", easing: 'easeInOutBack' }, 700);
     	}
 		else{
 			$("#box-atualizar").hide("fade", { direction: "top", easing: 'easeInOutBack' }, 700)			
@@ -30,9 +33,7 @@ var characters = 500;
 
 
 $("#box-atualizar").click(function(){
-	$('#lista-noticia').html('');
-	pagina_Noticia();
-	outras_Noticias(1)
+	location.href="index.html";
 });
 
 $("#botoes-menu img").click(function(){
@@ -123,8 +124,8 @@ function escolherFoto() {
 $('#envia_mensagem').click(function(e){
 
 var os = $("#os").val();
-/*var telefone = $("#telefone").val();
-var email = $("#email").val();*/
+var telefone = $("#telefone").val();
+var email = $("#email").val();
 var nome = $("#nome").val();
 var programa = $( "#programa option:selected" ).val();
 var mensagem = $("#campo_mensagem").val();
@@ -146,13 +147,14 @@ $('#envia_mensagem').hide();
 $('.loading_mensagem').show();
 
  $.ajax({
-    url: 'http://www.postosgazoli.com.br/app/func-mensagem.php?nocache=' + (new Date()).getTime(),
+    url: 'http://www.postosgazoli.com.br/painel/func-mensagem.php?nocache=' + (new Date()).getTime(),
     type: 'POST',
 	cache:false,
-    /*data: {nome: nome, email:email, programa:programa, mensagem:mensagem, telefone:telefone, os:os },*/
-    data: {nome: nome,programa:programa, mensagem:mensagem, os:os },
+    data: {in_nome: nome, in_email:email, in_programa:programa, in_mensagem:mensagem, in_telefone:telefone, os:os },
+   /* data: {in_nome: nome,in_programa:programa, in_mensagem:mensagem, in_os:os },*/
 	crossDomain:true,
-    complete: function() { 
+    success: function(results){
+
 			alerta('Mensagem enviada com sucesso.');	
 			abre_Home();
 			$('#envia_mensagem').show();
