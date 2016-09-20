@@ -51,7 +51,7 @@
     <div class="menu-controls">
         <a href="#" class="open-menu"><i class="fa fa-navicon"></i></a>
     </div>
-        <div id="titulo-header"><div style='margin-left: -50px;height: 35px;'>AUTO POSTO BRASIL</div></div>
+        <div id="titulo-header"><div style='margin-left: -50px;height: 35px;'>Auto Posto Castelo Branco</div></div>
        
 </div>
        
@@ -87,7 +87,7 @@
            
     </div>
     
-        <div id="box-atualizar"><img src="imagens/loader-noticias2.gif"> Atualizar Notícias</div>   
+        <div id="box-atualizar"><img src="imagens/loader-noticias2.gif"> Atualizar Promoções</div>   
     
     <div id="content" class="snap-content bg-metropole">
 
@@ -101,6 +101,7 @@
                           
                  <h2>Etanol <span id="i1"></span></h2>
                  <h2>Gasolina <span id="i2"></span></h2>
+                 <h2>Gasolina Adt.<span id="i5"></span></h2>
                  <h2>Diesel <span id="i3"></span></h2>                 
                  <h2>Diesel S10 <span id="i4"></span></h2>
 
@@ -115,7 +116,7 @@
             <input id="email" type="email" name="email" value="Seunome@seuemail.com" onfocus="this.value = ''; this.style.color ='#FFFFFF'" onblur="if (this.value=='') this.style.color ='#cfbe9b';  if (this.value!='') this.style.color ='#FFFFFF'; if (this.value=='') this.value = this.defaultValue;  ">
            <select id="programa" name="programa">
                 <option value="">Escolha o Auto Posto</option>
-                <option value="23">Oswaldo Cruz</option>
+                <option value="22">Adamantina</option>
             </select>
             <textarea id="campo_mensagem" onfocus="this.value = ''; this.style.color ='#FFFFFF'" onblur="if (this.value=='') this.style.color ='#cfbe9b';  if (this.value!='') this.style.color ='#FFFFFF'; if (this.value=='') this.value = 'Mensagem';">Mensagem</textarea>
             <span class="limite">Limite: <strong>500</strong></span><br><br>
@@ -128,7 +129,7 @@
 
         <div id="notificacoes" style="display:none;">
           <div id="area-notificacoes">
-          Deseja receber notificações a cada nova notícia?<br><br>
+          Deseja receber notificações?<br><br>
           
                   <div class="radios"></div>
           
@@ -160,6 +161,7 @@ $.ajax({
               $('#i2').html('R$ '+value.gasolina);
               $('#i3').html('R$ '+value.diesel);
               $('#i4').html('R$ '+value.diesels10);
+              $('#i5').html('R$ '+value.adt);
           });
       
     
