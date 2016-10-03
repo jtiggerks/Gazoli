@@ -3,9 +3,7 @@ $(document).ready(function() {
 
 
 
-$('#menu-box').show();
-$("#menu-box").delay(1500).effect("pulsate",{ times:5}, 2500).delay(1400).fadeOut(1000);
-
+ 
 $('#content').scroll(function(){
         if($("#noticias").css('display') != 'none'){
 		var elem = $('#content');            
@@ -690,18 +688,12 @@ buttons: {
 		"Não": function() {
             localStorage.setItem('notificacoes', 1);
 			$(this).dialog( "close" );
-$('#menu-box').hide();
-$('#menu-box').show();
-$("#menu-box").delay(1500).effect("pulsate",{ times:5}, 2500).delay(1400).fadeOut(1000);
-			
+ 		
 		},
 		"Sim": function() {
             localStorage.setItem('notificacoes', '');
 			$(this).dialog( "close" );
-$('#menu-box').hide();
-$('#menu-box').show();
-$("#menu-box").delay(1500).effect("pulsate",{ times:5}, 2500).delay(1400).fadeOut(1000);
-
+ 
 		}
 	}
 
@@ -1147,8 +1139,7 @@ $('#voltar-header img').on('click', function(e) {
     var selected_menu_item_number = ($( ".menu a" ).index( selected_menu_item ) );
     menu_slider.trigger('owl.jumpTo', selected_menu_item_number);
     
-    console.log(selected_menu_item_number);
-    
+     
     var scl=0; // Create a variable
     window.setInterval(function(){
        scl=0; // Reset this variable every 0.5 seconds
@@ -1182,7 +1173,7 @@ $('#voltar-header img').on('click', function(e) {
 	});
 
 	$('.open-menu').click(function() {
-		$('#menu-box').hide();
+		 
         $(this).toggleClass('active-slide');
 		$('.menu-controls').effect("highlight", {}, 500);
 		if( snapper.state().state=="left" ){

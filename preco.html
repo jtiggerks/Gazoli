@@ -33,9 +33,7 @@
     <span class="event listening"></span>
     <span class="event received"></span>
 </div>
-<div id="menu-box">
-    <img src="imagens/menu-box.png" width="70">
-</div>
+ 
 <div class="header">
 <input type="hidden" id="playing" value=""> <!--Tocando no Podcast-->
 <input type="hidden" id="desc-playing" value=""> <!--Tocando no Podcast-->
@@ -99,13 +97,14 @@
    <div id="home">
         <div id="imghome" style="padding: 64px;" >
                           
-                 <h2>Etanol <span id="i1"></span></h2>
-                 <h2>Gasolina <span id="i2"></span></h2>
-                 <h2>Gasolina Adt.<span id="i5"></span></h2>
-                 <h2>Diesel <span id="i3"></span></h2>                 
-                 <h2>Diesel S10 <span id="i4"></span></h2>
+                 <h2><span id="s1" style="color:#000"></span> <span id="i1"></span></h2>
+                 <h2><span id="s2"  style="color:#000"></span> <span id="i2"></span></h2>
+                 <h2><span id="s3"  style="color:#000"></span> <span id="i5"></span></h2>
+                 <h2><span id="s4" style="color:#000"></span> <span id="i3"></span></h2>                 
+                 <h2><span id="s5" style="color:#000"></span> <span id="i4"></span></h2>
 
-
+                <br><br>
+                Ofertas válida para hoje <span id="dataaa"></span>
         </div>
     </div>  
  
@@ -140,9 +139,24 @@
       </div>
 </div>
 <script>
-
+function dataAtualFormatada(){
+    var data = new Date();
+    var dia = data.getDate();
+    if (dia.toString().length == 1)
+      dia = "0"+dia;
+    var mes = data.getMonth()+1;
+    if (mes.toString().length == 1)
+      mes = "0"+mes;
+    var ano = data.getFullYear();  
+    return dia+"/"+mes+"/"+ano;
+}
 (function ($) {
 $(document).ready(function() {
+
+
+ 
+
+  $('#dataaa').html(dataAtualFormatada);
 
 $.ajax({
     url: 'http://www.postosgazoli.com.br/painel/preco.php?t='+ (new Date()).getTime(),
@@ -156,12 +170,29 @@ $.ajax({
     success: function(results){
  
           $.each(results,function(key,value)
-          {  
-              $('#i1').html('R$ '+value.etanol);
-              $('#i2').html('R$ '+value.gasolina);
-              $('#i3').html('R$ '+value.diesel);
-              $('#i4').html('R$ '+value.diesels10);
-              $('#i5').html('R$ '+value.adt);
+          {   
+              if(value.etanol)
+                $('#i1').html('R$ '+value.etanol);
+              
+              if(value.gasolina)
+                $('#i2').html('R$ '+value.gasolina);
+              
+              if(value.diesel)
+                $('#i3').html('R$ '+value.diesel);
+              
+              if(value.diesels10)
+                $('#i4').html('R$ '+value.diesels10);
+              
+              if(value.adt)
+                $('#i5').html('R$ '+value.adt);
+
+              $('#s1').html(value.s1);
+              $('#s2').html(value.s2);
+              $('#s3').html(value.s3);
+              $('#s4').html(value.s4);
+              $('#s5').html(value.s5);
+
+
           });
       
     
