@@ -6,7 +6,9 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.castelobranco.autopostogazoli"
-        version   = "2.2">
+        version   = "2.2"
+        versionCode="2" 
+        >
 
     <name>Postos Gazoli</name>
 
@@ -74,8 +76,7 @@
     <gap:plugin name="org.apache.cordova.geolocation" source="npm" />
     <gap:plugin name="org.apache.cordova.splashscreen"  source="npm" />
 	<gap:plugin name="cordova-plugin-whitelist" source="npm" version="1.0.0" />
-	<gap:plugin name="pushbots-cordova-plugin" source="npm" />
-	<gap:plugin name="nl.kingsquare.background-audio" source="pgb" version="1.0.0" />
+	<gap:plugin name="pushbots-cordova-plugin" source="npm" /> 
 	<gap:plugin name="org.apache.cordova.statusbar" source="npm"/>
 	
 	
